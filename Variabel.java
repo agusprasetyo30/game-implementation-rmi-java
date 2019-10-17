@@ -12,4 +12,5 @@ package GameRMI;
 public class Variabel {
    public static int dataIndex = 0;
    public static int SCORE = 0;
+   public static int MAKSIMAL_MAIN = 1;
 }

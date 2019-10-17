@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import GameRMI.GameInterface;
+import java.util.Random;
 
 /**
  *
@@ -22,16 +23,18 @@ public class Soal extends javax.swing.JFrame
    Game dataGame;
    String dataFoto;
    Timer timer;
-   int detik = 3;
+   int detik = 10;
 
    
    public GameInterface game;
-    
-    public Soal()
+   Random acakAngka = new Random(); 
+//   int hasil;
+   
+   public Soal()
     { 
         initComponents();
-     
-      if (Variabel.dataIndex == 14) {
+        
+      if (Variabel.MAKSIMAL_MAIN > 5) {
          JOptionPane.showMessageDialog(null, "Selamat anda menang ye", "Peringatan", JOptionPane.WARNING_MESSAGE);
          System.exit(1);
          this.dispose();
@@ -102,6 +105,7 @@ public class Soal extends javax.swing.JFrame
       lblLevel = new javax.swing.JLabel();
       jLabel1 = new javax.swing.JLabel();
       lblScore = new javax.swing.JLabel();
+      lblSoal = new javax.swing.JLabel();
 
       setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,7 +147,7 @@ public class Soal extends javax.swing.JFrame
          }
       });
 
-      lblDetik.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+      lblDetik.setFont(new java.awt.Font("Dialog", 1, 50)); // NOI18N
       lblDetik.setForeground(new java.awt.Color(0, 0, 0));
       lblDetik.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
       lblDetik.setText("00:30");
@@ -165,65 +169,80 @@ public class Soal extends javax.swing.JFrame
       lblScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
       lblScore.setText("Score");
 
+      lblSoal.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+      lblSoal.setForeground(new java.awt.Color(0, 0, 0));
+      lblSoal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+      lblSoal.setText("1 soal");
+
       javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
       jPanel1.setLayout(jPanel1Layout);
       jPanel1Layout.setHorizontalGroup(
          jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
          .addGroup(jPanel1Layout.createSequentialGroup()
-            .addContainerGap()
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                .addGroup(jPanel1Layout.createSequentialGroup()
-                  .addComponent(lblScore)
-                  .addGap(248, 248, 248)
-                  .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGap(25, 25, 25)
+                  .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                      .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblDetik)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
-                        .addComponent(lblLevel)))
-                  .addContainerGap())
-               .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                  .addGap(0, 0, Short.MAX_VALUE)
-                  .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(189, 189, 189))
-                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                            .addComponent(btnC, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                            .addComponent(btnA, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                            .addComponent(btnD, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                           .addComponent(btnB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17))))))
+                           .addComponent(btnB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                     .addComponent(lblScore, javax.swing.GroupLayout.Alignment.LEADING)))
+               .addGroup(jPanel1Layout.createSequentialGroup()
+                  .addGap(191, 191, 191)
+                  .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                  .addGap(49, 49, 49)
+                  .addComponent(lblSoal))
+               .addGroup(jPanel1Layout.createSequentialGroup()
+                  .addGap(288, 288, 288)
+                  .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                     .addComponent(jLabel1)
+                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblDetik)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblLevel)
+                        .addGap(12, 12, 12)))))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
       );
       jPanel1Layout.setVerticalGroup(
          jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
          .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addComponent(lblDetik)
                .addGroup(jPanel1Layout.createSequentialGroup()
-                  .addGap(16, 16, 16)
-                  .addComponent(lblLevel))
+                  .addGap(24, 24, 24)
+                  .addComponent(lblScore)
+                  .addGap(68, 68, 68))
+               .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                  .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(lblLevel)
+                        .addGap(29, 29, 29))
+                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblDetik)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                  .addComponent(jLabel1)
+                  .addGap(12, 12, 12)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                .addGroup(jPanel1Layout.createSequentialGroup()
-                  .addGap(15, 15, 15)
-                  .addComponent(lblScore)))
-            .addGap(20, 20, 20)
-            .addComponent(jLabel1)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(18, 18, 18)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-               .addComponent(btnA, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-               .addComponent(btnB, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(35, 35, 35)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-               .addComponent(btnD, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-               .addComponent(btnC, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(28, Short.MAX_VALUE))
+                  .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                  .addGap(18, 18, 18)
+                  .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                     .addComponent(btnA, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                     .addComponent(btnB, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                  .addGap(35, 35, 35)
+                  .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                     .addComponent(btnD, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                     .addComponent(btnC, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+               .addGroup(jPanel1Layout.createSequentialGroup()
+                  .addGap(74, 74, 74)
+                  .addComponent(lblSoal)))
+            .addContainerGap(23, Short.MAX_VALUE))
       );
 
       javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -248,6 +267,7 @@ public class Soal extends javax.swing.JFrame
          if (game.jawabA(Variabel.dataIndex) == true) {
             timer.cancel();       
             
+            Variabel.MAKSIMAL_MAIN = Variabel.MAKSIMAL_MAIN + 1;
             Variabel.dataIndex = Variabel.dataIndex + 1;
             Variabel.SCORE = Variabel.SCORE + 10;
             Soal soal = new Soal();
@@ -276,6 +296,7 @@ public class Soal extends javax.swing.JFrame
          if (game.jawabB(Variabel.dataIndex) == true) {
             timer.cancel();       
             
+            Variabel.MAKSIMAL_MAIN = Variabel.MAKSIMAL_MAIN + 1;
             Variabel.dataIndex = Variabel.dataIndex + 1;
             Variabel.SCORE = Variabel.SCORE + 10;
 
@@ -305,6 +326,7 @@ public class Soal extends javax.swing.JFrame
          if (game.jawabC(Variabel.dataIndex) == true) {
             timer.cancel();       
             
+            Variabel.MAKSIMAL_MAIN = Variabel.MAKSIMAL_MAIN + 1;
             Variabel.dataIndex = Variabel.dataIndex + 1;
             Variabel.SCORE = Variabel.SCORE + 10;
 
@@ -334,6 +356,7 @@ public class Soal extends javax.swing.JFrame
          if (game.jawabD(Variabel.dataIndex) == true) {
             timer.cancel();       
             
+            Variabel.MAKSIMAL_MAIN = Variabel.MAKSIMAL_MAIN + 1;
             Variabel.dataIndex = Variabel.dataIndex + 1;
             Variabel.SCORE = Variabel.SCORE + 10;
 
@@ -362,6 +385,11 @@ public class Soal extends javax.swing.JFrame
    public void coba()
    {
       try {
+         int hasil = acakAngka.nextInt(14);
+         Variabel.dataIndex = hasil;
+         
+         lblSoal.setText(String.valueOf(Variabel.MAKSIMAL_MAIN) + " Soal");
+         
          btnA.setText("A. " + game.ambilSoalA(Variabel.dataIndex));
          btnB.setText("B. " + game.ambilSoalB(Variabel.dataIndex));
          btnC.setText("C. " + game.ambilSoalC(Variabel.dataIndex));
@@ -415,5 +443,6 @@ public class Soal extends javax.swing.JFrame
    private javax.swing.JLabel lblFoto;
    private javax.swing.JLabel lblLevel;
    private javax.swing.JLabel lblScore;
+   private javax.swing.JLabel lblSoal;
    // End of variables declaration//GEN-END:variables
 }
